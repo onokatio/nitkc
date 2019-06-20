@@ -1,0 +1,152 @@
+# テーマ2 RLC回路による過渡特性の測定
+
+# 2.1 実験目的
+
+抵抗コイル,キャパシタで構成される簡単な回路の特性を測定し、その基本特性を理解するとともに、理論的解析の手法を修得する。
+
+# 2.2 使用機器
+
+本実験では以下の機器を使用する。
+- ファンクション·ジェネレータ
+- シンクロスコープ
+- 抵抗 10 [kΩ]
+- コイル 0.1[H]
+- キャパシタ 1000[pF]
+
+# 2.3 実験方法
+
+明らかに測定ミスと考えられる場合は、再測定を行うこと。
+
+## 2.3.1 過渡特性の測定(必須課題)
+
+RL回路を構築し、コイルの両端に現れる電圧波形 $e_{out}$ を観測する。
+
+1.  低周波発振器の波形を矩形波にセットし、周波数は1〜10 [kHz]程度、振幅は4[$V_{p-p}$]とする。
+
+2. 素子の両端に現れる$e_{out}$を入力波形$e_{in}$とともにグラフ用紙に記録する。繰り返し波形は2周期以上(3周期目の始まりまで)描画すること.また, シンクロスコープの時間軸,電圧軸の凡例を必ず示すこと.
+
+3. 波形の一部を可能な限り拡大して、グラフを描画せよ、まず,縦軸のスケールを調整して縦方向が一杯になるようにする。次に, 横軸のスケールを調整して,大きく表示する。
+
+同様に,キャパシタについても観測する.
+
+## 2.3.2 周波数特性の測定(発展課題)
+RL回路、RC回路について、それぞれ以下の手順で測定を行う。
+
+1. 低周波発振器の波形を正弦波にセットし、周波数を 10 [Hz] から100[kHz] まで変化させたときの入力電圧$E_{in}$と出力電圧$E_{out}$を観測する。
+
+2. 記録した結果からゲインを計算し、横軸を角周波数ω,縦軸をゲイン A(ω)として片対数グラフにプロットする。ここで、A(ω)は式(2.1) で求まる。
+
+$A(ω) = 20 \log{\left| \frac{E_{in}}{E_{out}} \right|}$
+
+(2.1)
+
+# 2.4 実験結果
+
+## 2.4.1 過渡特性の測定
+
+RL回路の、$e_{in}$と$e_{out}$の関係を図2.1に示す。
+
+![image alt](https://lh3.googleusercontent.com/1lPI2hSzIqqiOsImVX3a3tydURDovrUwdmqqjVq9vSiUgQ7BtTEf42wRTbgVK4KnUKtBct2uYOgYGpfBbSgbRFFp9Wd8OCeFHjbqZXX5g1qMSvXPNYgTbV0evbA65cSg2AVCPZuMLRM=w320-h240-no)
+
+図2.1 RL回路の$e_{in}$と$e_{out}$の関係
+
+
+>※上記の画像について以下補足を行う。
+縦軸座標単位は50.0[μs]、横軸座標単位は[2.00V]である。
+また、それぞれ前者は時間、後者は電圧を表しているものである。
+黄色のデータが$e_{in}$、青色のデータが$e_{out}$を表している。
+また、便宜上2つのグラフを一つの図に結合したため、座標(0,0)点（以下、ゼロ点と表記する）が不明確である。
+そのため、$e_{in}$のゼロ点は`1→`が指し示す点、$e_{out}$のゼロ点は`2→`が指し示す点であること、時間軸の基準点は（そもそもグラフは瞬間の切り出しなので0秒という概念は存在しないが）中央の`↓`が指し示す位置を両方のグラフの共通した位置として定義する。
+その他、このフォーマットはシンクロスコープの画面と同じ構成のため、各自読み替え参照されたし。
+>
+>また、以下から再びグラフの図示が行われるが、各座標単位以外は当補足を適用するものとする。
+座標のメモリあたりの単位については図ごとに異なるため、それぞれ記載する。
+
+
+次に、上記のグラフの$e_{out}$を拡大したものを図2.2に示す。
+
+![image alt](https://lh3.googleusercontent.com/qVjqlTkou6cpfmmPfIOaYamJ3hKeU7_-v825nufKXzAPKKhwf086PHANbKQGFJtmkmBDV6ZXkJz0gJQ22-s4TIEW5NY9FqsqZRK-3_OvfJKGkJeNyxFSrsEcKlHniiOBmMPhkY-KAyvpMMnoJyydOuFJtA8zhY3R1sxqyPWbujZD0p9z69C-BV12nfTB0GWHiv28bLA6z7IQYzgi_r1Z8ycbE8TeNeDQ1MWbLE1ta76jLsxOX-p-S7DpEXh5bzJCLrSsOQqmJqzBwZAA8tyg5czCyXRd7m35u-EVfhg4EWEF36yx15b0vhfLaZjqFilPF3f4t453YL0CssP2pqnTSJAnRbktHCX295SnOVE0b0rDlnqTQPgHK141vaYE4jOxFE07G3R6mU78gipXoook4w7cYhIpGxmLIYie0uVg9Kv1lafNXV97v2KYrvId1ncboXKz26E3xCnNCyd9XO9xS1s0RGKvfFrss9Dn4Few1c_2bqfgL4CBbSK7djLpLsS0P-fZ8eMvQO3Ul3z8lWsGTyx5J02WrND3o4-ypDGpxZfrRiq9sg6w05DkJdNgFVhw4fTHw9KNMkNLUsc5ox4TJEorzxQuh8wE-Fk9CfpmfghYYLuj1wTYeqX3comxBuZWoIQA80k1hgZouF8sMQwsttB98-XLcb4Nf2lIgyREqK2-Xce9mRnEI5gls6XB9tq11rwPtPeMCphG9WDAvDQ8_tFhsw=w320-h240-no)
+
+図2.2 RL回路の$e_{out}$の拡大図
+
+この図2.2の座標単位は、横10.0[μs]、縦500[mV]である。1周期がなるべく画面に収まるように拡大してある。
+
+RC回路の、$e_{in}$と$e_{out}$の関係を図2.3に示す。
+
+![image alt](https://lh3.googleusercontent.com/89XqYuf5vvRPyQAeAiA2GdUiqsAblMmZ5lC_YAf60Th5-YiVbzDMQ6jZFxR6zG-1v7ZtMvH0vZjQFjT3G3Ghcng2QhbFFWelJcvDeZ0jx60awgaNke0ql7yhO45U0_sqLIoCWM_2WwqTyizSzuaYy_hPWg_3xMm7PM8WxhzIppdOmqoSYzknONIhVHtwpx8q6u2pklwf5ok0gJdL6XYD07Gk4zvPZLMmQBvnRXVVqswq18dGcFPbpNB--y2VJaKiToMMQtsIEN25FZzdVmthbAlsL4Y9cXkEd9oGq55aBveH3beuSJ0AYVlQ_z2O2xuuvFikp47KWW9xRBqHIJzO5Z8JCOFAhjc5ON0nYmM1aKkBWBnOUBZXDyzP1sCm7kPub7LWM51-5f5y-W3xt2MeR6RcGzqnkaiugJMJCNdhLe6KMlZSO1QqqWVbBHkHV8Kkddg1PPvZyIQkr4GFERzOdqwQ49BkvmJYf9rx5ldpK-K08BOWFEcNgJRRBDKaNsMqICOdhnXKPTh3tAhzAISaNj4fqXr8OKz7I9HXLAYYL34XqC_cKhoU7ZzWAI-x57PaNWqHfUqDeM1W1_9REzpqPp39RgNYMRV7vd9SGlfYBGpkAQ2qPp9-boJhX2_yuddo0-fd9ra9ioOibzQdJ-l1Xrq-b1s6hgGwZMUMZTGjBgPcDtzIT-7J_RX--2kN5qHpxM9fcLmySWVtS5tN32r-WpKVZA=w320-h240-no)
+
+図2.3 RC回路の$e_{in}$と$e_{out}$の関係
+
+縦軸座標単位は50.0[μs]、横軸座標単位は[2.00V]である。
+
+
+次に、上記の回路を拡大したものを図2.4に示す。
+
+![image alt](https://lh3.googleusercontent.com/03KBLjtC3V927LcW5UpyVgpZMbdwrzXo5TPp46MewZzELY-L2ybyagYFmdUfwrM0EhdvEUUJYynk--OYQEMPvQ72L_5C-xOReAeZePPqwSFyBo-L_FZqa-0nYpf4l4nAoSevBNLf1RvDGfYV27nIeLWKFCOJdAvDj_46NpQWKviR5HLZEMpb2xGrHy9IDJTx0R8_lE_-kV9JS0KJxvDxoiav7xMA16ycxB6X9NzWUpqLBsj7O0u1V5RYkUs7MFQz0IjqdGenJtHr-Oekv4ksiS3bfu7zf1cked6T4IPghQrOlpCagxYiMRkh1vAagTu2vJwfRc723fw6rZVQEo9TCTmNdI-ZLDyfn1ziak6uP4m7ZCePF5xVS5GrRIcYLAtA3ndgszH65trtil5t1DtBHaGBhwk9GLP27_Jat4lhXWr2QTl4I9Ir_Ekipu6fx3nrMvkjnMLQuAX2qW6UI8FZc4wL82Oja-FvCETrA1M7i9ics0hLD3e4_gYFmgHaFE9Zxkd0Snm1jdllgAdqYQhkBuTb9bVaHExAAyyzpBf0yFLMhDCz_jOeNyNf0Q9uVQlsv43tjHBmshPptx_1UAvKdzFKFLmq_mKy_dlsANpMXaiadjOEs_bzO0cZvh8gS-CTEYxK6SL6A_ORu6CmdzrytNZje7Awxjw8V6EkXGUsjp3SDVhLn8RsaETAJVj1puceNNdzzF0rH9CTFZ1pp7yFn230KQ=w320-h240-no)
+
+図2.4 RC回路の$e_{out}$の拡大図
+
+## 2.5.2 周波数特性の測定
+
+RL/RC回路（合わせてRLC回路と表記する）の周波数特性について、定義したゲインと各周波数の関係を以下の図2.5に示す。これは縦軸が対数になっている、片対数グラフである。
+
+![image alt](https://lh3.googleusercontent.com/z1T0x8xr1HhMmOtJKvZXfHUBk6QDxw8CrNwEXg5k50Go1wyzaKNXW3IMRn_Ptr2HU4i1wY6Yh9W4ybWs1v5tOy2Z9FWgr1wChRQotpDchYY2WBoBrLAcPZSqMWdS8LGnx9KbaiaoyduB-_IM96wUaFtYTu1a8Wk7kmdhSob_kuPTQ7zE_X3hJsXFVM68aAAJVOVpcHga1g0ypsUF5TGIIQlYkeWVthe4bcD64KpEO2_C8q9lS0eWYZ2waUDZkOtYcjVHhOqvzbU-3Xjw1V5zvsjSp2EWTgxsGSK2WZYwwTt8aHkRTS1qbhGLtA-TQDsafdFW5sLd1WpskgEmvJVk7wvYBIevHjPDCXhX0zUAgXo6td267ohu8mTApTpo4KQ--qWPlK5POmaSLAHiylNNh2mYhxi4Y715ccRkR_jZUdQZRpfBtU34zgwryIeofvwyx_zMLpIinp01fXlxdtGV6UQd-1qdBj1LepBM5zA0w9UYfY8WASK2uplVI5bxMmcYc2WSVTQUnTWU2MFnl26GVOs2fu2j-dkc1z_mMmzk0Cb5-sUt2P2qUzSzHxJx7FWOG9qrn0IoPwdd8m-8NB612-9M1-M_gt6t-t0QgIL8LQmIFkmus25p_a5F4_m38xcPm-Xw6LjCjukh1Dp_MCR6Fg1r9pMr51j4fxmdK3-bONxj3R-pzUULmsf61MgfpsSF0owe3krXvMhBh62lyT3XFjWEWg=w600-h371-no)
+
+図2.5 RLC回路の周波数特性
+
+また、念の為、グラフだけではなく、実際に取得したデータを以下に示す。
+これはスペース区切りの文書、文字列であるため`表`とは明記しないことに注意されたい。
+
+```
+周波数	RC電圧	ゲイン	RL電圧	ゲイン
+10	3.92	-0.1754784862	8	6.020599913
+50	3.92	-0.1754784862	20	13.97940009
+100	3.92	-0.1754784862	40	20
+500	3.92	-0.1754784862	80	26.02059991
+1000	3.92	-0.1754784862	140	30.88136089
+2000	3.84	-0.3545753392	240	35.56302501
+3000	3.84	-0.3545753392	320	38.06179974
+4000	3.76	-0.537442928	380	39.55447211
+5000	3.72	-0.6303410289	440	40.8278537
+6000	3.64	-0.8191721536	480	41.58362492
+7000	3.56	-1.012199867	520	42.27886705
+8000	3.48	-1.209614948	540	42.60667537
+9000	3.36	-1.514414279	580	43.22736004
+10000	3.28	-1.723722952	600	43.52182518
+```
+
+# 2.5 検討事項
+
+- R-LとR-Cの各々について, 以下の項目につ
+いて検討せよ
+
+## 2.5.1 過渡特性の測定
+
+1. ラプラス変換を用いて回路方程式を立てて理論式を求めよ.また,その軌跡を観測結果に重ねて描画して比較・検討せよ.
+
+RL回路の論理式を$E \exp(-\frac{R}{L}t)$、RC回路の論理式を$E(1- \exp(-\frac{1}{RC}t))$と置く。
+
+RL回路の場合を図2.6、RC回路の場合を図2.7に示す。
+
+![image alt](https://lh3.googleusercontent.com/qVjqlTkou6cpfmmPfIOaYamJ3hKeU7_-v825nufKXzAPKKhwf086PHANbKQGFJtmkmBDV6ZXkJz0gJQ22-s4TIEW5NY9FqsqZRK-3_OvfJKGkJeNyxFSrsEcKlHniiOBmMPhkY-KAyvpMMnoJyydOuFJtA8zhY3R1sxqyPWbujZD0p9z69C-BV12nfTB0GWHiv28bLA6z7IQYzgi_r1Z8ycbE8TeNeDQ1MWbLE1ta76jLsxOX-p-S7DpEXh5bzJCLrSsOQqmJqzBwZAA8tyg5czCyXRd7m35u-EVfhg4EWEF36yx15b0vhfLaZjqFilPF3f4t453YL0CssP2pqnTSJAnRbktHCX295SnOVE0b0rDlnqTQPgHK141vaYE4jOxFE07G3R6mU78gipXoook4w7cYhIpGxmLIYie0uVg9Kv1lafNXV97v2KYrvId1ncboXKz26E3xCnNCyd9XO9xS1s0RGKvfFrss9Dn4Few1c_2bqfgL4CBbSK7djLpLsS0P-fZ8eMvQO3Ul3z8lWsGTyx5J02WrND3o4-ypDGpxZfrRiq9sg6w05DkJdNgFVhw4fTHw9KNMkNLUsc5ox4TJEorzxQuh8wE-Fk9CfpmfghYYLuj1wTYeqX3comxBuZWoIQA80k1hgZouF8sMQwsttB98-XLcb4Nf2lIgyREqK2-Xce9mRnEI5gls6XB9tq11rwPtPeMCphG9WDAvDQ8_tFhsw=w320-h240-no)
+![image alt](https://lh3.googleusercontent.com/EARAbOqEScCT_FSkovElm-b-j4evSAZh61ZfzIVXTp3YTHGHPGvkEVbufH1XGqepfpLelpo7J4qBI9-V_H1J_AaDrRuBK8SDbmpyZ9KE646DGnibXR64LIZzkA5NmKWDYikU4ioIZDfK2eOlDnBApDRH_s96MFFB1-fWfPMvHF6hVlhEEfYeV_U6lPVef8IGGu2M_iJ0ZCDFr_CV_pXIP-JCQ_K9CQlMHNQyRUb9h4FD-6tYPtiVARsEZd8N_zHDGfLkGDLU2NlsmZaYDQoX2fkUjnKcRlhdj42du4pqikXL4uWNvTkL1i-3FJFaix4ew5MdV5lMdraqpajdDWYl2au7adMtp_yIYmxJqHG2EIN50xkp1FJHbAP3-YVFhDHemqQnTegFOH1eHXFPsPStXA4ooXNC22eTPqR2QmwDaBxlAxBVYoWIABMzf3kdZYlHdmzLR_tggcmU9TwbPvrdJYDdQyipAo1-4ZxJrO4wzXKlaey4VFZ0wwd8y49_js4S8qdJCAVq19IF4vjoLExRN2juG1drYc2tC-3rcFAI3a34eoSFOUDAjQXqCOoikRHvXgeYch3rX2PefBIg5aBSTXS6nOxkOIhjwlDQuTQ_41II5YCh_WzrNcZB-VRiDB3gZ2cJVCd7xFSt1jy2wbaWfVGw4k190kN7XDG29uij_xIniBbAvSeKSnqOvFbmQ5myB3kAr0NA1TXGRAZ-fU0YXweC2A=w539-h378-no)
+![image alt](https://lh3.googleusercontent.com/c39bDL_lBg5L-fO_Gl9bXWYDrijCHWhqeT3jifmzreVzg_YhSsMIVqTmgfYNM6D6Hl_6UW5bqnQkTnzd5OGYux4mQQqDe0D2BFTLzeih0MFH6NICXpDRqe9wHwrxnQhvmAxgGkBa1Xz4jTBdVYVA35iG6K5D_uOpwzGM8GxU-uiPZvmRWaVvNT92Et2smsghdJNgUomThcGyhvdbTwUsaTSdPTn6JyQYMnoA7T0PXikyCQh31DHC2FCjTEzaK6DAEtEjUAPKx1D-FHPdK5QECQ5vYDLoTQHLSJi0DFy2o-Y1Hgllvz5eFPs3e_tG_mkAa7d3mSHrn9bDMv-GzqST7ssOwU4cfTu64G5k9ySuX3I6oBkv3t4rcjbfJ_0QOCg2vFOFJACKRU65GHaE2OvByyOw0NBeyVT1XQqbZ_i5y2dKwJ1PjBdaBEy0mDnlOkYIifkIX3kBz1oQ9xbaP-6kGE6UsJWZYAXf3koYG4D4eb2ttZ4zKz2MG26mJehD4e071ABsRctPi3NhNgzuHlZXkTEDElIeKdZumAmh86ANKw5bVd9WdiT_HMobG5-SNbM_Fw_ABhz2rJCllGoawsFdMSulO7G8yDnRzGzI7pneAPPcY5iFtUUdbLVZYIY-0XqIfYjv6D9xNOXB9cNICFZ-BxmIUrCprlEx0RGmM1f6KoTPU2SOWfS8IE1ZMDlHhFixWWfN8mab_ahXHIZwkXYd_PoRsA=w478-h390-no)
+
+図2.6 RL回路のコイル電圧の実測値と理論値の軌跡
+
+>※暗算により無数の点を計算することは不可能に等しいため、コンピューターを使い演算を行わせた。また、数学的に完全な関数ではない矩形波の生成も手元の環境では不可能なため、矩形波の自然数電圧の場合と負電圧の場合で場合分けをしてグラフを描画した。
+軌跡を重ねる行為は画像のプロット数値と重なり非常に可読性が損なわれるため行っていない。これは故意である。
+以上が工夫した点と補足である。
+またこの補足は以下の図に対しても有効なものとする。
+
+![image alt](https://lh3.googleusercontent.com/03KBLjtC3V927LcW5UpyVgpZMbdwrzXo5TPp46MewZzELY-L2ybyagYFmdUfwrM0EhdvEUUJYynk--OYQEMPvQ72L_5C-xOReAeZePPqwSFyBo-L_FZqa-0nYpf4l4nAoSevBNLf1RvDGfYV27nIeLWKFCOJdAvDj_46NpQWKviR5HLZEMpb2xGrHy9IDJTx0R8_lE_-kV9JS0KJxvDxoiav7xMA16ycxB6X9NzWUpqLBsj7O0u1V5RYkUs7MFQz0IjqdGenJtHr-Oekv4ksiS3bfu7zf1cked6T4IPghQrOlpCagxYiMRkh1vAagTu2vJwfRc723fw6rZVQEo9TCTmNdI-ZLDyfn1ziak6uP4m7ZCePF5xVS5GrRIcYLAtA3ndgszH65trtil5t1DtBHaGBhwk9GLP27_Jat4lhXWr2QTl4I9Ir_Ekipu6fx3nrMvkjnMLQuAX2qW6UI8FZc4wL82Oja-FvCETrA1M7i9ics0hLD3e4_gYFmgHaFE9Zxkd0Snm1jdllgAdqYQhkBuTb9bVaHExAAyyzpBf0yFLMhDCz_jOeNyNf0Q9uVQlsv43tjHBmshPptx_1UAvKdzFKFLmq_mKy_dlsANpMXaiadjOEs_bzO0cZvh8gS-CTEYxK6SL6A_ORu6CmdzrytNZje7Awxjw8V6EkXGUsjp3SDVhLn8RsaETAJVj1puceNNdzzF0rH9CTFZ1pp7yFn230KQ=w320-h240-no)
+![image alt](https://lh3.googleusercontent.com/hg7VlSLWNFfiFLKIlReS_82w9uquT3y6TWrRDjY5Sms-W_QORVI3pwP0joGD2_GAU1TVL9z38BBTY_e1CECUAI8cRFpT-kFToHv4JQwhKl5j7B-3zL2Ql5ML0mrcr46NPlXC4SQf-mBp36QoIoadl1bnXZ_4OxVLNT0xMUXVvRWvelZw0F25x6FmvZEoJSdERieAOONJmcIMxxyNd5GOW7_mwAuXhH4WpUUfwbC7lmmA8nwmOeIjrmKjzzs84vGTk0zOhb33mPOVQUgZhH8CkNC4BI4ICgQDpeOhWdHg6m7cE5EMbZG04Vpv1TZq55E9sDnSQRmj_dRB5cLEpVsUtIKntlU6d15t2zlaM0SZQCI8c_twuU46sDdXgfJD6n9Bg9KbTgfsibwqZCzaWBiAsU4HbLhknd4sss75T8hn6HaPWR_gS7AE7Rq3CrJa-F4wPB74fHFhHvP0dFhH_B4dfgtkXSqQxEiJ0HPjjOQ1DGsaPES9xDpHw375tkMjuIvaWMrih8OV4yqqJ2LjUj20BtibDptmEaQtV4hr__waSOe9WAhobYOJ1HuxbWLhEKxVQbN4vu7Co9Cy_O3QZuHkF7o9qEUizUqnpq8c6ZveUPtEPeaUtV34k2ot6-jXPEUZh3ZJK1T7y5KWVQ7aM0K28mR1OYMhIVGPGs2fhN-yQsFYIJZWGyNBg2V1lNgjVr2kdaKH2tmAmNOZVq49JLOYwS0wig=w490-h400-no)
+![image alt](https://lh3.googleusercontent.com/urgdwf6qfXHYcDCdlZ6iEbthATxLtRPrCilhXdkKDyoyKTNMJQeSb1C27FBJDZTY8YZwqSF1b1W5nMmfJ318QYdHSxnw7VLYCiN5zoJSPYUWCQvZy94557sk_TIUnObbHOhFFanAu4UvJzvHDrjCrp6EZcWJxhL5lk2gumeyxEmD3ARR1D_PslCF0Q9EVLw-2sylysANVF7w8UbLycNr59oLlwNEdPLDQGBIZdqUkI0LqvJsKJKaF2eBGIiXxrnX1uLgWudasTfDshvi0Hg99zJgdctKM3q16sn8G_71BxT1MxkUhwMAwmeKhsQFyj6rw0F7yaywyIf0ouTtU7w2MkjO4Xa_racdAcxeWKw5Dbjv1a_DXjbuc0B9FlCYJtc3TBJQ7eI7nKVkKXTXDLuAM3ykDyGw1N_IlhJLsAdr3GIisvUH7QG3WVrnt0RF1o6bII1D_-Zv5MAcn7SjSmfuFHRx72viDwtA3egckbqMo7mqaV2SOlUeB5V7oN45kkUeUEGVXdBesm_Oj_TEUtH9WShbu-5BUxYN09cN4kVAMHl8gOC7gUJjzDtJQCl6rGgdndcUY4Mn1CKYdhDuknKV-Mkd2_2U4iomFtZr8r9lmKLnhpCa-Tkf1MLb6o31r6ljABgG5-mwSxmQ-0Qu0H2l5m3BPZB9XBZAlljisTsGkMC0xS5amNWNjF4tmg26jWwYCE3mjxku06c4Lg7Jf6KKf9GByg=w474-h405-no)
+
+図2.7 RC回路のコイル電圧の実測値と理論値の軌跡
+
+この図より、実験結果は理論値にそっており、実験は概ね正しいということが考察できる。
+
+2. 過渡応答の波形が各々全振幅の37%, 63%となるまでの時間(時定数)を測定結果から求めよ.またその値は理論値と一致するか,比較·検討せよ
+
+全振幅の37%と63%は、-0.65[V]と0.65[V]であり、これは論理式、測定値ともに10.0[μs]となっているため正しい。
