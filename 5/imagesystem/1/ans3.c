@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
       /* 例題：コピーするプログラム */
       for (y = 0; y < idata.height; y++){
 	for (x = 0; x < idata.width; x++){
-	  idata.results[RED][y][idata.width-x]
+	  idata.results[RED][y][idata.width-1-x]
 	    = idata.source[RED][y][x];
-	  idata.results[GREEN][y][idata.width-x]
+	  idata.results[GREEN][y][idata.width-1-x]
 	    = idata.source[GREEN][y][x];
-	  idata.results[BLUE][y][idata.width-x]
+	  idata.results[BLUE][y][idata.width-1-x]
 	    = idata.source[BLUE][y][x];
 	}
       }
