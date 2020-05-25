@@ -1,4 +1,4 @@
-IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp ans5.bmp
+IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp ans5.bmp ans6.bmp ans7.bmp
 
 all : $(IMAGE)
 
@@ -9,7 +9,7 @@ ans%.bmp : ans%.out #../kadai/no%/in%.bmp
 	./$< ../kadai/no$*/in$*.bmp $@
 
 ans%.out : ans%.c bmpfile.o
-	$(CC) -o $@ $^
+	$(CC) -lm -o $@ $^
 
 clean:
 	rm -f $(IMAGE)
