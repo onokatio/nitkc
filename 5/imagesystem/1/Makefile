@@ -1,14 +1,14 @@
-IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp
+IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp ans5.bmp
 
 all : $(IMAGE)
 
 test:
 	./test.sh
 
-%.bmp : %.out in0.bmp
-	./$< in0.bmp $@
+ans%.bmp : ans%.out #../kadai/no%/in%.bmp
+	./$< ../kadai/no$*/in$*.bmp $@
 
-%.out : %.c bmpfile.o
+ans%.out : ans%.c bmpfile.o
 	$(CC) -o $@ $^
 
 clean:
