@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "def.h"
 #include "var.h"
@@ -30,7 +31,8 @@ int main(int argc, char *argv[])
 			printf("指定コピー元ファイル%sが見つかりません\n",argv[1]);
 		else {
 			for(int i=0;i<255;i++){
-				LUT[i] = ( (i/255.0)*(i/255.0) )*255.0;
+				LUT[i] = sqrt(i/255.0)*255.0;
+				//printf("%d,%d ",sqrt(i/255.0),LUT[i]);
 			}
 
 			for (y = 0; y < idata.height; y++){
