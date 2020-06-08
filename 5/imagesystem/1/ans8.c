@@ -87,8 +87,8 @@ int main(int argc, char *argv[])
 				}
 			}
 
-			for(int x=0; x<255; x++){
-				for(int y=0; y<255; y++){
+			for(int y=0; y< idata.height; y++){
+				for(int x=0; x< idata.width; x++){
 					int g = idata.source[RED][y][x];
 					int k = 0;
 					for(; k<255; k++){
