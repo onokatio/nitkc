@@ -94,9 +94,9 @@ int main(int argc, char *argv[])
 					for(; k<255; k++){
 						if(nm[g][k] == 0) continue;
 						if(cnt[g][k] < nm[g][k]){
-							idata.results[RED][x][y] = k;
-							idata.results[GREEN][x][y] = k;
-							idata.results[BLUE][x][y] = k;
+							idata.results[RED][y][x] = k;
+							idata.results[GREEN][y][x] = k;
+							idata.results[BLUE][y][x] = k;
 							cnt[g][k]++;
 						}
 					}
@@ -104,18 +104,6 @@ int main(int argc, char *argv[])
 				}
 			}
 
-			for(int i=0;i<255;i++){
-				LUT[i] = 255.0 * (1 / ( 1.0 + exp( (-7.0)*(i/255.0 - 0.5) ) ) );
-				//printf("%f ",(7.0)*(0.5 - i/255.0));
-			}
-
-			for (y = 0; y < idata.height; y++){
-				for (x = 0; x < idata.width; x++){
-						idata.results[RED][y][x] = LUT[idata.source[RED][y][x]];
-						idata.results[GREEN][y][x] = LUT[idata.source[GREEN][y][x]];
-						idata.results[BLUE][y][x] = LUT[idata.source[BLUE][y][x]];
-				}
-			}
 			if (writeBMPfile(argv[2], &idata) > 0)
 				printf("コピー先ファイル%sに保存できませんでした\n",argv[2]);
 		}
