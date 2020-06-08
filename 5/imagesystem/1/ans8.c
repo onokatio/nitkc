@@ -13,8 +13,7 @@ int main(int argc, char *argv[])
 	double c;
 	int x,y;
 
-	unsigned char LUT[256];
-	int histogram[256];
+	int histogram[256] = {};
 	unsigned average = 0;
 	int nm[256][256] = {};
 
@@ -33,9 +32,6 @@ int main(int argc, char *argv[])
 		if (readBMPfile(argv[1], &idata) > 0)
 			printf("指定コピー元ファイル%sが見つかりません\n",argv[1]);
 		else {
-			for(int i=0;i<256;i++){
-				histogram[i] = 0;
-			}
 			for (y = 0; y < idata.height; y++){
 				for (x = 0; x < idata.width; x++){
 					histogram[idata.source[RED][y][x]]++;
