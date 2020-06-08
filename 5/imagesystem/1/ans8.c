@@ -69,19 +69,21 @@ int main(int argc, char *argv[])
 					histogram[i+1] += overflow; // send overflow
 					histogram[i] -= overflow; // cut overflow
 					nm[i][i+1] = overflow;
+					printf("\noverflow %d\n", overflow);
 				}
 				for(int i=0;i<256;i+=4){
-					printf("\n");
 					for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
+					printf("\n");
 				}
-				printf("-----------------------------");
+				printf("\n-----------------------------");
 			}
 
 
 			printf("\n");
-			for(int i=0;i<256;i+=4){
-				printf("\n");
+			for(int i=0;i<256;i+=2){
+				printf("%d ", i);
 				for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
+				printf("\n");
 			}
 
 			int cnt[256][256] = {};
@@ -99,16 +101,14 @@ int main(int argc, char *argv[])
 					int g = idata.source[RED][y][x];
 					int k = 0;
 					for(; k<256; k++){
-						if(nm[g][k] == 0) continue;
-						if(g==k) continue;
-						if(cnt[g][k] <= nm[g][k]){
-							idata.results[RED][y][x] = k;
-							idata.results[GREEN][y][x] = k;
-							idata.results[BLUE][y][x] = k;
-							cnt[g][k]++;
-						}
+						if(nm[g][k] != 0 && cnt[g][k] < nm[g][k]) break;
 					}
-
+					if(k != 256){
+						idata.results[RED][y][x] = k;
+						idata.results[GREEN][y][x] = k;
+						idata.results[BLUE][y][x] = k;
+						cnt[g][k]++;
+					}
 				}
 			}
 
