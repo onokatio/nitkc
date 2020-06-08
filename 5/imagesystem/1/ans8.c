@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
 	double c;
 	int x,y;
 
-	unsigned char LUT[255];
+	unsigned char LUT[256];
 	int histogram[256];
 	unsigned average = 0;
-	int nm[255][255] = {};
+	int nm[256][256] = {};
 
 	// 例題プログラム
 	// 　BMPファイルをコピーするプログラム
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		if (readBMPfile(argv[1], &idata) > 0)
 			printf("指定コピー元ファイル%sが見つかりません\n",argv[1]);
 		else {
-			for(int i=0;i<255;i++){
+			for(int i=0;i<256;i++){
 				histogram[i] = 0;
 			}
 			for (y = 0; y < idata.height; y++){
@@ -43,18 +43,18 @@ int main(int argc, char *argv[])
 				}
 			}
 			average = (idata.height*idata.width)/256;
-			for(int i=0;i<255;i+=4){
+			for(int i=0;i<256;i+=4){
 				printf("\n");
 				for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
 			}
 			printf("-----------------------------\n");
 
-			for(int i=0;i<255;i++){
+			for(int i=0;i<256;i++){
 				if(histogram[i] < average){
 					printf("average: %d\n", average);
 					printf("histogram[%d]: %d\n", i, histogram[i]);
 					printf("husoku: %d\n", average - histogram[i]);
-					for(int j=1;histogram[i] < average && i+j < 255;j++){
+					for(int j=1;histogram[i] < average && i+j < 256;j++){
 						int amount=0;
 
 						// copy from higher item
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 					histogram[i] -= overflow; // cut overflow
 					nm[i][i+1] = overflow;
 				}
-				for(int i=0;i<255;i+=4){
+				for(int i=0;i<256;i+=4){
 					printf("\n");
 					for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
 				}
@@ -82,12 +82,12 @@ int main(int argc, char *argv[])
 			}
 
 			printf("\n");
-			for(int i=0;i<255;i+=4){
+			for(int i=0;i<256;i+=4){
 				printf("\n");
 				for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
 			}
 
-			int cnt[255][255] = {};
+			int cnt[256][256] = {};
 
 			for (y = 0; y < idata.height; y++){
 				for (x = 0; x < idata.width; x++){
@@ -101,8 +101,9 @@ int main(int argc, char *argv[])
 				for(int x=0; x < idata.width; x++){
 					int g = idata.source[RED][y][x];
 					int k = 0;
-					for(; k<255; k++){
+					for(; k<256; k++){
 						if(nm[g][k] == 0) continue;
+						if(g==k) continue;
 						if(cnt[g][k] < nm[g][k]){
 							idata.results[RED][y][x] = k;
 							idata.results[GREEN][y][x] = k;
