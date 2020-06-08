@@ -81,6 +81,7 @@ int main(int argc, char *argv[])
 				printf("-----------------------------");
 			}
 
+
 			printf("\n");
 			for(int i=0;i<256;i+=4){
 				printf("\n");
@@ -104,7 +105,7 @@ int main(int argc, char *argv[])
 					for(; k<256; k++){
 						if(nm[g][k] == 0) continue;
 						if(g==k) continue;
-						if(cnt[g][k] < nm[g][k]){
+						if(cnt[g][k] <= nm[g][k]){
 							idata.results[RED][y][x] = k;
 							idata.results[GREEN][y][x] = k;
 							idata.results[BLUE][y][x] = k;
