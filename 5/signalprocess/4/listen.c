@@ -28,19 +28,29 @@ int main()
 	char SoundFile[256];
 	double frequency;
 	int VolumeLevel;
+	int p;
+	int q;
 	printf("Frequency\n");
 	scanf("%lf",&frequency);
 	printf("Select Volume Level\n");
 	scanf("%d",&VolumeLevel);
 	printf("Sound File Name\n");
 	scanf( "%s" , SoundFile );
+	printf("Select Start(P)\n");
+	scanf("%d",&p);
+	printf("Select Stop(Q)\n");
+	scanf("%d",&q);
 	int volume = 1000*VolumeLevel;
 	int length = NUM_SAMPLES;
 
 	int i;
 	for(i=0;i<length;i++) {
 		double t = (double) i / WAVFILE_SAMPLES_PER_SECOND;
-		waveform[i] = volume*sin(frequency*t*2*M_PI);
+		for(int n = p; n < q; n++){
+			//waveform[i] += (volume*(4/M_PI))*((sin((2*n - 1)*frequency*t*2*M_PI))/(2*n-1)); // nokogiri
+			waveform[i] += (volume*((-2)/M_PI))*(pow(-1,n)/n)*sin(n*frequency*t*2*M_PI); // nokogiri
+			//waveform[i] = volume*sin(frequency*t*2*M_PI);
+		}
 	}
 
 	FILE * f = wavfile_open(strcat(SoundFile,".wav"));
