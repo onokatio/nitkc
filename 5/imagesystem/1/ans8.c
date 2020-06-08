@@ -49,32 +49,32 @@ int main(int argc, char *argv[])
 			}
 
 			for(int i=0;i<255;i++){
-				if(nm[i][i] < average){
-					for(int j=0;nm[i][i] != average;j++){
-						int tmp=0;
+				if(histogram[i] < average){
+					for(int j=0;histogram[i] != average && i+j < 255;j++){
+						int amount=0;
 
 						// copy from higher item
-						if(average - nm[i][i] > nm[i+j][i+j]){
-							tmp = nm[i+j][i+j];
+						if(average - histogram[i] > histogram[i+j]){
+							amount = histogram[i+j];
 						}else{
-							tmp = average - nm[i][i];
+							amount = average - histogram[i];
 						}
-						nm[i+j][i+j] -= tmp; // delete from higher item
-						nm[i+j][i] = tmp; // write log
-						nm[i][i] += tmp; // append value from higher item
+						histogram[i+j] -= amount; // delete from higher item
+						nm[i+j][i] = amount; // write log
+						histogram[i] += amount; // append value from higher item
 					}
-				}else if(nm[i][i] > average){
-					int overflow =  nm[i][i] - average; // send overflow
-					nm[i+1][i+1] += overflow; // send overflow
-					nm[i][i] = average; // cut overflow
+				} else if(histogram[i] > average) {
+					int overflow =  histogram[i] - average; // calculate overflow
+					histogram[i+1] += overflow; // send overflow
+					histogram[i] -= overflow; // cut overflow
 					nm[i][i+1] = overflow;
 				}
 			}
 			printf("\n");
 			printf("\n");
-			for(int i=0;i<255;i++){
+			for(int i=0;i<255;i+=4){
 				printf("\n");
-				for(int j=0;j<(nm[i][i])/4;j++) printf("#");
+				for(int j=0;j<(histogram[i]);j++) printf("#");
 			}
 
 			int cnt[255][255] = {};
@@ -87,8 +87,8 @@ int main(int argc, char *argv[])
 				}
 			}
 
-			for(int y=0; y< idata.height; y++){
-				for(int x=0; x< idata.width; x++){
+			for(int y=0; y < idata.height; y++){
+				for(int x=0; x < idata.width; x++){
 					int g = idata.source[RED][y][x];
 					int k = 0;
 					for(; k<255; k++){
