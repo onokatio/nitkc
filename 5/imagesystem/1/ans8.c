@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	int x,y;
 
 	unsigned char LUT[255];
-	unsigned char histogram[255];
+	int histogram[256];
 	unsigned average = 0;
 	int nm[255][255] = {};
 
@@ -42,15 +42,19 @@ int main(int argc, char *argv[])
 					nm[idata.source[RED][y][x]][idata.source[RED][y][x]]++;
 				}
 			}
-			average = (idata.height*idata.width)/255;
+			average = (idata.height*idata.width)/256;
 			for(int i=0;i<255;i+=4){
 				printf("\n");
 				for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
 			}
+			printf("-----------------------------\n");
 
 			for(int i=0;i<255;i++){
 				if(histogram[i] < average){
-					for(int j=0;histogram[i] != average && i+j < 255;j++){
+					printf("average: %d\n", average);
+					printf("histogram[%d]: %d\n", i, histogram[i]);
+					printf("husoku: %d\n", average - histogram[i]);
+					for(int j=1;histogram[i] < average && i+j < 255;j++){
 						int amount=0;
 
 						// copy from higher item
@@ -62,6 +66,7 @@ int main(int argc, char *argv[])
 						histogram[i+j] -= amount; // delete from higher item
 						nm[i+j][i] = amount; // write log
 						histogram[i] += amount; // append value from higher item
+						printf("(%d,%d,%d) ",i+j, amount, average - histogram[i]);
 					}
 				} else if(histogram[i] > average) {
 					int overflow =  histogram[i] - average; // calculate overflow
@@ -69,12 +74,17 @@ int main(int argc, char *argv[])
 					histogram[i] -= overflow; // cut overflow
 					nm[i][i+1] = overflow;
 				}
+				for(int i=0;i<255;i+=4){
+					printf("\n");
+					for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
+				}
+				printf("-----------------------------");
 			}
-			printf("\n");
+
 			printf("\n");
 			for(int i=0;i<255;i+=4){
 				printf("\n");
-				for(int j=0;j<(histogram[i]);j++) printf("#");
+				for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
 			}
 
 			int cnt[255][255] = {};
