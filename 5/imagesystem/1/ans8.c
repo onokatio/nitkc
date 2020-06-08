@@ -77,13 +77,30 @@ int main(int argc, char *argv[])
 				for(int j=0;j<(nm[i][i])/4;j++) printf("#");
 			}
 
-			int count[255][255] = {};
+			int cnt[255][255] = {};
+
+			for (y = 0; y < idata.height; y++){
+				for (x = 0; x < idata.width; x++){
+						idata.results[RED][y][x] = idata.source[RED][y][x];
+						idata.results[GREEN][y][x] = idata.source[GREEN][y][x];
+						idata.results[BLUE][y][x] = idata.source[BLUE][y][x];
+				}
+			}
 
 			for(int x=0; x<255; x++){
 				for(int y=0; y<255; y++){
-					for(int i=0; i<255; i++){
-						if(nm[idata.source[RED][y][x]][i] == 0) continue;
+					int g = idata.source[RED][y][x];
+					int k = 0;
+					for(; k<255; k++){
+						if(nm[g][k] == 0) continue;
+						if(cnt[g][k] < nm[g][k]){
+							idata.results[RED][x][y] = k;
+							idata.results[GREEN][x][y] = k;
+							idata.results[BLUE][x][y] = k;
+							cnt[g][k]++;
+						}
 					}
+
 				}
 			}
 
