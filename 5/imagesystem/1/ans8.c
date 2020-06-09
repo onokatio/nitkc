@@ -10,11 +10,11 @@
 int main(int argc, char *argv[])
 {
 	imgdata idata;
-	double c;
+	//double c;
 	int x,y;
 
 	int histogram[256] = {};
-	unsigned average = 0;
+	int average = 0;
 	int nm[256][256] = {};
 
 	// 例題プログラム
@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
 					int g = idata.source[RED][y][x];
 					int k = 0;
 					for(; k<256; k++){
+						if(g==k) continue;
 						if(nm[g][k] != 0 && cnt[g][k] < nm[g][k]) break;
 					}
 					if(k != 256){
@@ -108,12 +109,28 @@ int main(int argc, char *argv[])
 						idata.results[GREEN][y][x] = k;
 						idata.results[BLUE][y][x] = k;
 						cnt[g][k]++;
+					}else{
+						printf("k not found %d",k);
+						printf("(%d,%d)\n",x,y);
 					}
 				}
 			}
 
+			int histogram2[256] = {};
+
+			for (y = 0; y < idata.height; y++){
+				for (x = 0; x < idata.width; x++){
+					histogram2[idata.results[RED][y][x]]++;
+				}
+			}
+			for(int i=0;i<256;i++){
+				printf("%d ",histogram2[i]);
+			}
+			printf("width %d height %d depth %d color %d", idata.width, idata.height, idata.color_depth,idata.used_color);
+
 			if (writeBMPfile(argv[2], &idata) > 0)
 				printf("コピー先ファイル%sに保存できませんでした\n",argv[2]);
+
 		}
 	}
 }
