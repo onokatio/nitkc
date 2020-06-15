@@ -47,9 +47,7 @@ int main()
 	for(i=0;i<length;i++) {
 		double t = (double) i / WAVFILE_SAMPLES_PER_SECOND;
 		for(int n = p; n < q; n++){
-			//waveform[i] += (volume*(4/M_PI))*((sin((2*n - 1)*frequency*t*2*M_PI))/(2*n-1)); // nokogiri
-			waveform[i] += (volume*((-2)/M_PI))*(pow(-1,n)/n)*sin(n*frequency*t*2*M_PI); // nokogiri
-			//waveform[i] = volume*sin(frequency*t*2*M_PI);
+			waveform[i] += (volume*(4/M_PI))*((sin((2*n - 1)*frequency*t*2*M_PI))/(2*n-1)); // nokogiri
 		}
 	}
 
