@@ -55,38 +55,31 @@ print(AMI(data))
 print(MAN(data))
 
 
-def plotwave(fig, pos, data):
+def plotwave(fig, pos, data, title):
     width = 25
-    data = data[0:width]
+    data = data[0:width+1]
     ax1 = fig.add_subplot(pos)
-    ax1.set_xticks(np.arange(0, width * 4, 4), minor=False)
-    ax1.set_xticks(np.arange(0, width * 4, 1), minor=True)
+    ax1.set_title(title)
+    ax1.set_xticks(np.arange(0, (width+1)*4, 4), minor=False)
+    ax1.set_xticks(np.arange(0, (width+1)*4, 1), minor=True)
     ax1.set_axisbelow(False)
     ax1.xaxis.grid(True, 'minor', linestyle='--', zorder=1)
     ax1.xaxis.grid(True, 'major', color='r', zorder=6)
-    ax1.plot(range(width * 4), data.flatten(), drawstyle='steps-post')
+    ax1.plot(np.arange(0, (width+1)*4, 1), data.flatten(), drawstyle='steps-post')
     ax1.set_ylim(-1.1,1.1)
+    ax1.set_xlim(0,width*4)
     return ax1
 
 
-fig = plt.figure()
-plotwave(fig, 711, NORMAL(data))
-plotwave(fig, 712, NRZ(data))
-plotwave(fig, 713, NRZ2(data))
-plotwave(fig, 714, RZ(data))
-plotwave(fig, 715, RZ2(data))
-plotwave(fig, 716, AMI(data))
-plotwave(fig, 717, MAN(data))
+fig = plt.figure(tight_layout=True)
+plotwave(fig, 711, NORMAL(data), 'data')
+plotwave(fig, 712, NRZ(data), 'NRZ')
+plotwave(fig, 713, NRZ2(data), 'NRZ2')
+plotwave(fig, 714, RZ(data), 'RZ')
+plotwave(fig, 715, RZ2(data), 'RZ2')
+plotwave(fig, 716, AMI(data), 'AMI')
+plotwave(fig, 717, MAN(data), 'MAN')
 plt.show()
-
-"""
-ax = fig.add_subplot(712).plot(range(width * 4), NRZ(data).flatten())
-ax = fig.add_subplot(713).plot(range(width * 4), NRZ2(data).flatten())
-ax = fig.add_subplot(714).plot(range(width * 4), RZ(data).flatten())
-ax = fig.add_subplot(715).plot(range(width * 4), RZ2(data).flatten())
-ax = fig.add_subplot(716).plot(range(width * 4), AMI(data).flatten())
-ax = fig.add_subplot(717).plot(range(width * 4), MAN(data).flatten())
-"""
 
 """
 graphdata(NORMAL(data[1:24]))
