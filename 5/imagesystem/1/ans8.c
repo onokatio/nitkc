@@ -56,8 +56,10 @@ int main(int argc, char *argv[])
 						// copy from higher item
 						if(average - histogram[i] > histogram[i+j]){
 							amount = histogram[i+j];
+							//amount = nm[i+j][i+j];
 						}else{
 							amount = average - histogram[i];
+							//amount = average - nm[i][i];
 						}
 						histogram[i+j] -= amount; // delete from higher item
 						nm[i+j][i] = amount; // write log
@@ -69,12 +71,13 @@ int main(int argc, char *argv[])
 					histogram[i+1] += overflow; // send overflow
 					histogram[i] -= overflow; // cut overflow
 					nm[i][i+1] = overflow;
-					printf("\noverflow %d\n", overflow);
+					//nm[i][i+1] = overflow;
+					printf("\nnm[%d][%d+1] = %d", i, i, overflow);
 				}
-				for(int i=0;i<256;i+=4){
-					for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
-					printf("\n");
-				}
+				//for(int i=0;i<256;i+=4){
+					//for(int j=0;j<(histogram[i]+histogram[i+1])/8;j++) printf("#");
+					//printf("\n");
+				//}
 				printf("\n-----------------------------");
 			}
 
@@ -96,6 +99,7 @@ int main(int argc, char *argv[])
 				}
 			}
 
+
 			for(int y=0; y < idata.height; y++){
 				for(int x=0; x < idata.width; x++){
 					int g = idata.source[RED][y][x];
@@ -111,7 +115,7 @@ int main(int argc, char *argv[])
 						cnt[g][k]++;
 					}else{
 						printf("k not found %d",k);
-						printf("(%d,%d)\n",x,y);
+						printf("(%d,%d,%d)\n",x,y,g);
 					}
 				}
 			}
