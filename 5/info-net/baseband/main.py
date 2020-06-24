@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 このプログラムはフリーソフトウェアです。あなたはこれを、フリーソフトウェ
-ア財団によって発行された GNU 一般公衆利用許諾契約書(バージョン2か、希
+ア財団によって発行された GNU 一般公衆利用許諾契約書(バージョン3か、希
 望によってはそれ以降のバージョンのうちどれか)の定める条件の下で再頒布
 または改変することができます。
 
