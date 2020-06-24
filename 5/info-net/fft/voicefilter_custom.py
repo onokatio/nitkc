@@ -22,7 +22,7 @@ F=np.fft.fftshift(F)
 plt.plot(range(len(F)), np.abs(F))
 plt.show()
 ##  low pass filter
-F[N_2-15000:N_2+15000]=0
+F[N_2-15000-10:N_2+15000+20]=0
 ## filtered spectrum
 plt.plot(range(len(F)), np.abs(F))
 plt.show()
