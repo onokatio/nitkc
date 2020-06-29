@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef DEF_H
+
 #include "def.h"
+#define DEF_H
+
+#endif
 #include "var.h"
 
 #include "bmpfile.h"
