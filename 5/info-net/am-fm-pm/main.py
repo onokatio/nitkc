@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 """
 Copyright (C) 2020 onokatio(おのかちお)
 
@@ -43,7 +44,7 @@ def AM(t):
     fc = 32
     return A * ( alpha * s(t) + 1 ) * numpy.cos(2 * math.pi * fc * t)
 
-t = numpy.arange(0,10,0.01)
+t = numpy.arange(0,128,0.01)
 print(t)
 print(s(t))
 print(AM(t))
