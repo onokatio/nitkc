@@ -6,8 +6,8 @@ int main(void){
 	int i,s = 0;
 	omp_set_num_threads(2);
 	#pragma omp parallel for
-	for (i = 0; i < 100000; i++) {
-		usleep(1);
+	for (i = 0; i < 10; i++){
+		usleep(random() % 100000);
 		s++;
 	}
 	printf("%d\n",s);
