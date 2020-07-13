@@ -69,10 +69,8 @@ int main(int argc, char *argv[])
 					double color;
 					if(list_size % 2 == 1){ // 9
 						color = list[(list_size - 1)/2];
-						printf("%d ",list_size);
 					}else{ // 8
 						color = (list[(list_size-2)/2] + list[list_size/2])/2;
-						printf("%d ",list_size);
 					}
 
 					idata.results[RED][y][x] = color;
