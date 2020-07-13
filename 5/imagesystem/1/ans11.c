@@ -81,7 +81,6 @@ int main(int argc, char *argv[])
 					}
 
 					double color = sqrt(fx*fx + fy*fy);
-					printf("%d ", (unsigned char)(color));
 					if(color > 255) color = 255;
 					idata.results[RED][y][x] = color;
 					idata.results[GREEN][y][x] = color;
