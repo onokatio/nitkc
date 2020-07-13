@@ -36,12 +36,13 @@ int main(int argc, char *argv[])
 
 		double Nroot = 3;
 		double n = 5;
-		double sum = 0;
+		int sum = 0;
 
 		for (y = 0; y < idata.height; y++){
 			for (x = 0; x < idata.width; x++){
 				int skip = 0;
 				sum = 0;
+				/*
 				for (int j = 0; j < Nroot; j++){
 					for (int i = 0; i < Nroot; i++){
 						int relative_x = i - (Nroot-1)/2;
@@ -54,6 +55,7 @@ int main(int argc, char *argv[])
 						}
 					}
 				}
+				*/
 
 				int tmpN = Nroot*Nroot - skip;
 
@@ -61,17 +63,19 @@ int main(int argc, char *argv[])
 					for (int i = 0; i < Nroot; i++){
 						int relative_x = i - (Nroot-1)/2;
 						int relative_y = j - (Nroot-1)/2;
-						if(	y + relative_y < 0 
+						if(y + relative_y < 0 
 						|| y + relative_y >= idata.height
 						|| x + relative_x < 0
 						|| x + relative_x >= idata.width ){
+							skip++;
 							continue;
 						}
-						if(i == j){
+						if(relative_x == 0 && relative_y == 0){
 							sum += idata.source[RED][y + relative_y][x + relative_x] * n;
 						}else{
 							sum += idata.source[RED][y + relative_y][x + relative_x];
 						}
+					}
 				}
 				double color = sum / (tmpN-1+n);
 				idata.results[RED][y][x] = color;
