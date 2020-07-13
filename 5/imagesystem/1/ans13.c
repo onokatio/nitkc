@@ -74,7 +74,6 @@ int main(int argc, char *argv[])
 					double color = f + 128;
 					if(color > 255) color = 255;
 					if(color < 0) color = 0;
-					printf("%f ", color);
 					idata.results[RED][y][x] = color;
 					idata.results[GREEN][y][x] = color;
 					idata.results[BLUE][y][x] = color;
