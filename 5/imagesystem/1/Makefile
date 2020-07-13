@@ -1,4 +1,4 @@
-IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp ans5.bmp ans6.bmp ans7.bmp ans8.bmp ans9.bmp ans10.bmp ans11.bmp ans12.bmp
+IMAGE := ans1.bmp ans2.bmp ans3.bmp ans4.bmp ans5.bmp ans6.bmp ans7.bmp ans8.bmp ans9.bmp ans10.bmp ans11.bmp ans12.bmp ans13.bmp
 
 all : $(IMAGE)
 
