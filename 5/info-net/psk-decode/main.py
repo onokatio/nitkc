@@ -38,11 +38,16 @@ N = 128
 
 def PSK(data):
     t = np.arange(N)
-    fc = 4
-    return A * np.sin(2*np.pi*fc*t/128 + np.pi * data)
+    fc = 2
+    return A * np.cos(2*np.pi*fc*t/N + np.pi * data)
+
+def PSKdw(data):
+    t = np.arange(N)
+    fc = 2
+    return A * np.cos(2*np.pi*fc*t/N)
 
 bits = [0,1,0,1,0,1,0,1,0]
-bits = []
+#bits = []
 
 str = ""
 
@@ -56,9 +61,24 @@ while True:
 sequence = np.arange(0, len(bits)*128, 128)
 
 wave_psk = []
+wave_psk_h = []
 
 for bit,seq  in zip(bits,sequence):
     wave_psk.extend( PSK(bit) )
+    wave_psk_h.extend( PSKdw(bit) )
+
+
+wave_psk = np.array(wave_psk)
+wave_psk *= np.array(wave_psk_h)
+
+
+wave_psk = np.fft.fftshift(np.fft.fft(np.fft.fftshift(wave_psk)))
+
+
+wave_psk[:512-16] = 0
+wave_psk[512+16:] = 0
+
+wave_psk = np.fft.fftshift(np.fft.ifft(np.fft.fftshift(wave_psk)))
 
 plt.plot(np.arange(len(wave_psk)), wave_psk)
 plt.show()
