@@ -30,6 +30,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import numpy as np
 
+def hakidasi(matrix):
+    loop = 0
+    (height, width) = matrix.shape
+
+    for i in range(height):
+        matrix[i] = matrix[i] / matrix[i][i]
+
+        for k in range(height):
+            if k==i:
+                continue;
+            div = matrix[k][i]
+            matrix[k] -= div * matrix[i]
+            loop+=1
+    ans = matrix[:,width-1]
+    return (ans,loop)
+
 def gauss(matrix):
     (height, width) = matrix.shape
     loop = 0
@@ -53,16 +69,22 @@ B = np.loadtxt('./b100.csv', delimiter=',')
 B = np.reshape(B,(len(B),1))
 matrix = np.concatenate([A,B],1)
 
-(ans1,loop1) = gauss(matrix)
+(ans1g,loop1g) = gauss(matrix)
+(ans1h,loop1h) = hakidasi(matrix)
 
 A = np.loadtxt('./A1000.csv', delimiter=',')
 B = np.loadtxt('./b1000.csv', delimiter=',')
 B = np.reshape(B,(len(B),1))
 matrix = np.concatenate([A,B],1)
 
-(ans2,loop2) = gauss(matrix)
+(ans2g,loop2g) = gauss(matrix)
+(ans2h,loop2h) = hakidasi(matrix)
 
-print(ans1)
-print(ans2)
-print(loop1)
-print(loop2)
+print(ans1g)
+print(ans1h)
+print(ans2g)
+print(ans2h)
+print(loop1g)
+print(loop1h)
+print(loop2g)
+print(loop2h)
