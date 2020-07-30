@@ -52,12 +52,6 @@ print(matrix)
 
 ans = np.zeros(width-1)
 
-#ans[2] = matrix[2][3]
-#ans[1] = matrix[1][3] - matrix[1][2] * ans[2]
-#ans[0] = matrix[0][3] - matrix[0][2] * ans[2] - matrix[0][1] * ans[1]
-
-#ans[i] = matrix[i][i:-1]
-
 for i in range(height-1,-1,-1):
     ans[i] = matrix[i][width-1] - sum(ans * matrix[i][0:-1])
 
