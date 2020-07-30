@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import numpy as np
 
 def gauss(matrix):
+    (height, width) = matrix.shape
     loop = 0
     for i in range(height):
         matrix[i] = matrix[i] / matrix[i][i]
@@ -52,7 +53,16 @@ B = np.loadtxt('./b100.csv', delimiter=',')
 B = np.reshape(B,(len(B),1))
 matrix = np.concatenate([A,B],1)
 
-(height, width) = matrix.shape
-(ans,loop) = gauss(matrix)
-print(ans)
-print(loop)
+(ans1,loop1) = gauss(matrix)
+
+A = np.loadtxt('./A1000.csv', delimiter=',')
+B = np.loadtxt('./b1000.csv', delimiter=',')
+B = np.reshape(B,(len(B),1))
+matrix = np.concatenate([A,B],1)
+
+(ans2,loop2) = gauss(matrix)
+
+print(ans1)
+print(ans2)
+print(loop1)
+print(loop2)
