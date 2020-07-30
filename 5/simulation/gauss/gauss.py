@@ -30,13 +30,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import numpy as np
 
-loop = 0
+def gauss(matrix):
+    loop = 0
+    for i in range(height):
+        matrix[i] = matrix[i] / matrix[i][i]
 
-matrix = [
-        [2.0,3.0,4.0,6.0],
-        [3.0,5.0,2.0,5.0],
-        [4.0,3.0,30.0,32.0],
-        ]
+        for k in range(i+1,height):
+            div = matrix[k][i]
+            matrix[k] -= div * matrix[i]
+            loop+=1
+
+    ans = np.zeros(width-1)
+
+    for i in range(height-1,-1,-1):
+        ans[i] = matrix[i][width-1] - sum(ans * matrix[i][0:-1])
+        loop+=1
+    return (ans,loop)
 
 A = np.loadtxt('./A100.csv', delimiter=',')
 B = np.loadtxt('./b100.csv', delimiter=',')
@@ -44,24 +53,6 @@ B = np.reshape(B,(len(B),1))
 matrix = np.concatenate([A,B],1)
 
 (height, width) = matrix.shape
-
-for i in range(height):
-    matrix[i] = matrix[i] / matrix[i][i]
-    #print(matrix)
-
-    for k in range(i+1,height):
-        div = matrix[k][i]
-        matrix[k] -= div * matrix[i]
-        #print(matrix)
-        loop+=1
-
-#print(matrix)
-
-ans = np.zeros(width-1)
-
-for i in range(height-1,-1,-1):
-    ans[i] = matrix[i][width-1] - sum(ans * matrix[i][0:-1])
-    loop+=1
-
+(ans,loop) = gauss(matrix)
 print(ans)
 print(loop)
