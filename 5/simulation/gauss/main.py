@@ -48,9 +48,6 @@ for i in range(3):
         if k==i:
             continue;
         div = matrix[k][i]
-        #for j in range(3):
-            #if(j != i):
-            #    matrix[k][j] -= div * matrix[i][j]
         matrix[k] -= div * matrix[i]
         print(matrix)
 
