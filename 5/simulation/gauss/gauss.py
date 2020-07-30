@@ -36,19 +36,23 @@ matrix = [
         [4.0,3.0,30.0,32.0],
         ]
 
-matrix = np.array(matrix)
+A = np.loadtxt('./A100.csv', delimiter=',')
+B = np.loadtxt('./b100.csv', delimiter=',')
+B = np.reshape(B,(len(B),1))
+matrix = np.concatenate([A,B],1)
+
 (height, width) = matrix.shape
 
 for i in range(height):
     matrix[i] = matrix[i] / matrix[i][i]
-    print(matrix)
+    #print(matrix)
 
     for k in range(i+1,height):
         div = matrix[k][i]
         matrix[k] -= div * matrix[i]
-        print(matrix)
+        #print(matrix)
 
-print(matrix)
+#print(matrix)
 
 ans = np.zeros(width-1)
 
