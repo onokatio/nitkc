@@ -29,7 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 を確認してください。
 """
 import numpy as np
-loop = 0
 
 matrix = [
         [2.0,3.0,4.0,6.0],
@@ -38,19 +37,24 @@ matrix = [
         ]
 
 matrix = np.array(matrix)
-(height, width) = matrix.shape
 
-for i in range(height):
-    matrix[i] = matrix[i] / matrix[i][i]
-    print(matrix)
+def hakidasi(matrix):
+    loop = 0
+    (height, width) = matrix.shape
 
-    for k in range(height):
-        if k==i:
-            continue;
-        div = matrix[k][i]
-        matrix[k] -= div * matrix[i]
-        print(matrix)
-        loop+=1
+    for i in range(height):
+        matrix[i] = matrix[i] / matrix[i][i]
 
-print(matrix)
+        for k in range(height):
+            if k==i:
+                continue;
+            div = matrix[k][i]
+            matrix[k] -= div * matrix[i]
+            loop+=1
+    ans = matrix[:,width-1]
+    return (ans,loop)
+
+(ans,loop) = hakidasi(matrix)
+
+print(ans)
 print(loop)
