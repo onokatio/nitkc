@@ -30,8 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import numpy as np
 
-eps = 0.001
-
 matrix = [
         [2.0,3.0,4.0,6.0],
         [3.0,5.0,2.0,5.0],
