@@ -33,23 +33,25 @@ import numpy as np
 eps = 0.001
 
 matrix = [
-        [2,3,4,6],
-        [3,5,2,5],
-        [4,3,30,32],
+        [2.0,3.0,4.0,6.0],
+        [3.0,5.0,2.0,5.0],
+        [4.0,3.0,30.0,32.0],
         ]
 
 matrix = np.array(matrix)
 
 for i in range(3):
-    keisu = matrix[i][i]
-    matrix[i] = matrix[i] / keisu
+    matrix[i] = matrix[i] / matrix[i][i]
     print(matrix)
 
     for k in range(3):
+        if k==i:
+            continue;
         div = matrix[k][i]
-        for j in range(3):
-            if(j != i):
-                matrix[k][j] -= div * matrix[i][j]
-    print(matrix)
+        #for j in range(3):
+            #if(j != i):
+            #    matrix[k][j] -= div * matrix[i][j]
+        matrix[k] -= div * matrix[i]
+        print(matrix)
 
 print(matrix)
