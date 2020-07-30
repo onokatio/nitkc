@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 を確認してください。
 """
 import numpy as np
+loop = 0
 
 matrix = [
         [2.0,3.0,4.0,6.0],
@@ -49,5 +50,7 @@ for i in range(height):
         div = matrix[k][i]
         matrix[k] -= div * matrix[i]
         print(matrix)
+        loop+=1
 
 print(matrix)
+print(loop)

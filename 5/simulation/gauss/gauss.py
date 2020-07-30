@@ -30,6 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import numpy as np
 
+loop = 0
+
 matrix = [
         [2.0,3.0,4.0,6.0],
         [3.0,5.0,2.0,5.0],
@@ -51,6 +53,7 @@ for i in range(height):
         div = matrix[k][i]
         matrix[k] -= div * matrix[i]
         #print(matrix)
+        loop+=1
 
 #print(matrix)
 
@@ -58,5 +61,7 @@ ans = np.zeros(width-1)
 
 for i in range(height-1,-1,-1):
     ans[i] = matrix[i][width-1] - sum(ans * matrix[i][0:-1])
+    loop+=1
 
 print(ans)
+print(loop)
