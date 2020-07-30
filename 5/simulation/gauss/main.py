@@ -39,12 +39,13 @@ matrix = [
         ]
 
 matrix = np.array(matrix)
+(height, width) = matrix.shape
 
-for i in range(3):
+for i in range(height):
     matrix[i] = matrix[i] / matrix[i][i]
     print(matrix)
 
-    for k in range(3):
+    for k in range(height):
         if k==i:
             continue;
         div = matrix[k][i]
