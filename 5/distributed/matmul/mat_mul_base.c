@@ -55,6 +55,20 @@ mat_set(double m[N][N])
 	}
 }
 
+/* a,b をランダムな行列に初期化 */
+void
+mat_set_random(double m[N][N])
+{
+	int i,j;
+	double d;
+
+	for (i = 0;i < N;i++){
+		for (j = 0;j < N;j++){
+			m[i][j] = ((double) random()) / INT_MAX;
+		}
+	}
+}
+
 void
 mat_mul(double a[N][N], double b[N][N], double c[N][N],int n)
 {
@@ -78,13 +92,24 @@ mat_mul(double a[N][N], double b[N][N], double c[N][N],int n)
 void
 mat_show(double c[N][N])
 {
-	int i,j;
+	int i,j,n;
 
-	for (i = 0;i < N;i++){
-		for (j = 0;j < N;j++){
-			printf ("%2.1lf ",c[i][j]);
+	if (N > 10){
+		n = 10;
+	}else{
+		n = N;
+	}
+	for (i = 0;i < n;i++){
+		for (j = 0;j < n;j++){
+			printf ("%2.1f ",c[i][j]);
+		}
+		if (N > n){
+			printf("…");
 		}
 		printf("\n");
+	}
+	if (N > n){
+		printf("…\n");
 	}
 }
 
