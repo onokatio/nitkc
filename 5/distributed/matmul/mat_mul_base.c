@@ -1,11 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
+#include <omp.h>
 
-#define N	(10LL)
-
+#define N	(1000LL)
 
 static void
 mat_set(double m[N][N]);
+
+extern void
+mat_set_random(double m[N][N]);
 
 static void
 mat_mul(double a[N][N], double b[N][N], double c[N][N],int n);
@@ -13,25 +17,28 @@ mat_mul(double a[N][N], double b[N][N], double c[N][N],int n);
 static void
 mat_show(double c[N][N]);
 
-int main(void){
-    static double a[N][N],b[N][N],c[N][N];
-    double ts,te;
+int
+mat_is_identity(double a[N][N],int n);
 
-    mat_set(a,N);
-    mat_set(b,N);
-    ts = omp_get_wtime();
-    mat_mul(a,b,c,N);
-    te = omp_get_wtime();
-    printf("N=%lld time %.2fs\n",N, te - ts);
-    if (mat_is_identity(a,N) && mat_is_identity(b,N)){
-        if (mat_is_identity(c,N)){
-            printf("おめでとう! 単位行列×単位行列 = 単位行列　になりました\n");
-            printf("ただし，プログラムの正しさが完全に確かめられたわけではありません\n");
-        }else{
-            printf("プログラムがまちがっているかも... 単位行列同士の積が単位行列になりませんでした\n");
-        }
-    }
-    //mat_show(c,N);
+int main(void){
+	static double a[N][N],b[N][N],c[N][N];
+	double ts,te;
+
+	mat_set(a);
+	mat_set(b);
+	ts = omp_get_wtime();
+	mat_mul(a,b,c,N);
+	te = omp_get_wtime();
+	printf("N=%lld time %.2fs\n",N, te - ts);
+	if (mat_is_identity(a,N) && mat_is_identity(b,N)){
+		if (mat_is_identity(c,N)){
+			printf("おめでとう! 単位行列×単位行列 = 単位行列　になりました\n");
+			printf("ただし，プログラムの正しさが完全に確かめられたわけではありません\n");
+		}else{
+			printf("プログラムがまちがっているかも... 単位行列同士の積が単位行列になりませんでした\n");
+		}
+	}
+	//mat_show(c,N);
 }
 
 void
@@ -116,14 +123,14 @@ mat_show(double c[N][N])
 int
 mat_is_identity(double a[N][N],int n)
 {
-    int i,j;
+	int i,j;
 
-    for (i = 0;i < n;i++){
-        for (j = 0;j < n;j++){
-            if ((i == j && a[i][j] != 1.0) || (i != j && a[i][j] != 0.0)){
-                return (0);
-            }
-        }
-    }
-    return (1);
+	for (i = 0;i < n;i++){
+		for (j = 0;j < n;j++){
+			if ((i == j && a[i][j] != 1.0) || (i != j && a[i][j] != 0.0)){
+				return (0);
+			}
+		}
+	}
+	return (1);
 }
