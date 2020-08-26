@@ -81,14 +81,20 @@ mat_mul(double a[N][N], double b[N][N], double c[N][N],int n)
 {
 	int i,j,k;
 
+	/*
 	for(i = 0;i < n;i++) {
 		for(j = 0;j < n;j++) {
 			c[i][j] = 0;
 		}
 	}
+	*/
 
+	/* for ループを並列化する．*/
+	/* 変数 j, k はスレッドごとに別々のものを持つ．	*/
+	#pragma omp parallel for private(j,k)
 	for(i = 0;i < n;i++) {
 		for(j = 0;j < n;j++) {
+			c[i][j] = 0.0;
 			for(k = 0;k < n; k++) {
 				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 			}
