@@ -28,9 +28,12 @@ def z(x,a,n):
     ret = ypoints[a] * (upper / downer)
     return ret
 
-xlist = np.arange(-1,1,0.1)
+xlist = np.arange(-1.1,1.1,0.1)
 
-plt.plot(xlist,zn(xlist,3))
+plt.plot(xlist,zn(xlist,pointnum))
+
+for i in range(len(xpoints)):
+    plt.plot(xpoints[i],ypoints[i],marker='.')
 
 plt.plot(xpoints[0],ypoints[0],marker='.')
 plt.plot(xpoints[1],ypoints[1],marker='.')
