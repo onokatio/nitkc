@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
  
-#define N 4/*課題の結果をチェックするためにはこちらは３か4を設定してください*.Sine波の場合は色々変えてみてください*/
+#define N 3/*課題の結果をチェックするためにはこちらは３か4を設定してください*.Sine波の場合は色々変えてみてください*/
 #define PI 3.1416
  
 struct Values
@@ -14,21 +14,18 @@ int main()
 {
     int n, k;             
     double x[N]={5,2,-2,4};          
-    double x2[N]={};
     struct Values X[N];
-    struct Values X2[N];
        double frequency1=8;/*1つ目のSine波の周波数*/
     double frequency2=12;/*2つ目のSine波の周波数*/
-    int A1=100;/*1つ目のSine波の振幅*/
-    int A2=5;/*2つ目ののSine波の振幅*/
+    int A1=50;/*1つ目のSine波の振幅*/
+    int A2=50;/*2つ目ののSine波の振幅*/
     double Magnitude[N];/*フーリエ変換変換後の信号の振幅*/
 
- /*ふたつのSin波の和
   for(n=0;n<N;n++)
    {
         double t = (double) n/N;
         x[n] = A1*sin(frequency1*t*2*M_PI)+A2*sin(frequency2*t*2*M_PI); 
-    } */
+    }
 
 //課題の結果をチェック
 
@@ -53,23 +50,6 @@ int main()
          printf ("X[%d]=%.3f+%.3fj\n",k,X[k].Re,X[k].Im); 
         
 
-    }
-
-    for (k=0 ; k<N ; ++k)
-    {
-        X2[k].Re = 0;
-        for (n=0 ; n<N ; ++n)
-          X2[k].Re += X[n].Re * cos(n * k * 2*PI / N) / N;
-          X2[k].Im = 0;
-        for (n=0 ; n<N ; ++n) 
-        X2[k].Im += X[n].Re * sin(n * k * 2*PI / N) / N;
-    }
-    for (k=0 ; k<N ; ++k)
-    {
-        if (X[k].Im<0)
-          printf ("X[%d]=%.3f%.3fj\n",k,X2[k].Re,X2[k].Im);
-        else
-          printf ("X[%d]=%.3f+%.3fj\n",k,X2[k].Re,X2[k].Im); 
     }
 
     for (k=0 ; k<N ; ++k)
