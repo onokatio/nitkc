@@ -101,10 +101,14 @@ for t in range(TIME):
         # wab = wab + ...
         # 
         #
-        deltaa = outa
-        deltab = outb
-        wab -= sigmoid((wbd+wbe))/outb
-        wac -= sigmoid((wcd+wce))/outb
+        deltaa = outa * t
+        deltab = outa * t + deltaa
+        deltac = outa * t + deltab
+        deltad = outa * t + deltad
+        waa -= sigmoid((wbd+wcd))/outb
+        wab -= sigmoid((wbe+wbe))/outb + waa
+        wad -= sigmoid((wcd+wbe))/outb + wab
+        wac -= sigmoid((wce+wce))/outb + wac
 
     # 誤差曲線のグラフ表示用の変数
     x.append(t)
