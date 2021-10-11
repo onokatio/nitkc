@@ -14,7 +14,7 @@ typedef struct {  /* 画像データに関するデータ構造 */
   Uchar source[COLORNUM][MAXHEIGHT][MAXWIDTH];  /* 元画像が入る配列 */
   Uchar results[COLORNUM][MAXHEIGHT][MAXWIDTH]; /* 処理結果が入る配列 */
   Uchar cwork[COLORNUM][MAXHEIGHT][MAXWIDTH];   /* 中間処理で使う配列 */
-  double work[COLORNUM][MAXHEIGHT][MAXWIDTH];   /* 中間処理で使う配列 */
+  //double work[COLORNUM][MAXHEIGHT][MAXWIDTH];   /* 中間処理で使う配列 */
   int width;           /* 画像の幅 */
   int height;          /* 画像の高さ */
   unsigned int color_depth;     /* 色の深さ */

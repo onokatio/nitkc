@@ -19,7 +19,6 @@ int compare(const void* a, const void* b){
 int main(int argc, char *argv[])
 {
 	imgdata idata;
-	double c;
 	int x, y;
 
 	// 例題プログラム
@@ -52,22 +51,37 @@ int main(int argc, char *argv[])
 					}
 			}
 			int max2 = 0;
-			int max2_x = 0;
-			int max2_y = 0;
-			for (i = 0; y < idata.height; y++){
-				if(idata.source[RED][y][x] > max1-50) break;
-				if(idata.source[RED][y][x] > max2){
-					max2 = idata.source[RED][y][x];
-					max2_x = x;
-					max2_y = y;
+			int max2_i = 0;
+			for (int i = 0; i < 256; i++){
+				if(abs(i - max1_i) < 50) continue;
+				if(histogram[i] > max2){
+					max2 = histogram[i];
+					max2_i = i;
 				}
 			}
-			printf("max1: %d %d %d\n", max1, max1_x, max1_y);
-			printf("max2: %d %d %d\n", max2, max2_x, max2_y);
+			int min = 255;
+			int min_i = 0;
+			int start,end;
+			if (max1_i > max2_i){
+				start = max2_i;
+				end = max1_i;
+			}else{
+				start = max1_i;
+				end = max2_i;
+			}
+			for (int i = start; i < end; i++){
+					if(histogram[i] < min){
+						min = histogram[i];
+						min_i = i;
+					}
+			}
+			printf("max1: %d %d\n", max1, max1_i);
+			printf("max2: %d %d\n", max2, max2_i);
+			printf("min: %d %d\n", min, min_i);
 			/* 例題：コピーするプログラム */
 			for (y = 0; y < idata.height; y++){
 				for (x = 0; x < idata.width; x++){
-					if(idata.source[RED][y][x] > 50){
+					if(idata.source[RED][y][x] >= min_i){
 						idata.results[RED][y][x] = 255;
 						idata.results[BLUE][y][x] = 255;
 						idata.results[GREEN][y][x] = 255;
